@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:chat_app/user_repository.dart';
+import '../../repository/user_repository.dart';
 import 'package:chat_app/validators.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';

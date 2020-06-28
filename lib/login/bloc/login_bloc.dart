@@ -4,7 +4,7 @@ import 'package:chat_app/validators.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../user_repository.dart';
+import '../../repository/user_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

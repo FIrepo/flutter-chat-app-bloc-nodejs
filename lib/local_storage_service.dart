@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TokenStorage {
   //* For shared preference class we have to define static
   //* key and static get and set function
+  static String sharedPreferenceUserIdKey = 'USERID';
   static String sharedPreferenceUserLoginTokenKey = 'TOKEN';
   static String sharedPreferenceEmailKey = 'USEREMAIL';
   static String sharedPreferenceUsernameKey = 'USERNAME';
@@ -20,6 +21,7 @@ class TokenStorage {
 
   static Future<void> saveUserSharedPreference(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(sharedPreferenceUserIdKey, user.userId);
     await prefs.setString(sharedPreferenceUserLoginTokenKey, user.token);
     await prefs.setString(sharedPreferenceEmailKey, user.email);
     await prefs.setString(sharedPreferenceUsernameKey, user.username);
@@ -39,6 +41,7 @@ class TokenStorage {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print('working till herre');
 
+    user.userId = prefs.getString(sharedPreferenceUserIdKey);
     user.token = prefs.getString(sharedPreferenceUserLoginTokenKey);
     user.email = prefs.getString(sharedPreferenceEmailKey);
     user.username = prefs.getString(sharedPreferenceUsernameKey);

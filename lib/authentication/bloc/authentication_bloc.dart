@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:chat_app/local_storage_service.dart';
 import 'package:chat_app/models/user.dart';
-import 'package:chat_app/user_repository.dart';
+import '../../repository/user_repository.dart';
 import 'package:equatable/equatable.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -42,6 +40,7 @@ class AuthenticationBloc
         print('is signed in: true');
 
         final user = await TokenStorage.getUserSharedPreference();
+        print('I WANT TO SEE IT: ' + user.userId);
         yield AuthenticationSuccess(user);
       } else {
         print('token: ' + await TokenStorage.getTokenSharedPreference());
@@ -55,8 +54,9 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapAuthenticationLoggedInState() async* {
     try {
-      final user = await TokenStorage.getUserSharedPreference();
+      final User user = await TokenStorage.getUserSharedPreference();
       print('working in auth logged in: ' + user.username);
+      print('TO SEE: ' + user.userId);
       yield AuthenticationSuccess(user);
     } catch (e) {
       print('this is a catch!!!!!!!!!');

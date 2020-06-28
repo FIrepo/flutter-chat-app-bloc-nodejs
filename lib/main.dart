@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           }
           if (state is AuthenticationSuccess) {
             print('authsucc: main.dart');
-            return HomeScreen();
+            return HomeScreen(state.user);
           }
         },
       ),

@@ -4,7 +4,7 @@ import 'package:chat_app/local_storage_service.dart';
 import 'package:chat_app/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
-import './local_storage_service.dart';
+import '../local_storage_service.dart';
 
 //! User Repo will have access to shared pref
 //*                    main
@@ -44,6 +44,7 @@ class UserRepository {
     print('coming from here');
     final token = json.decode(response.body)['token'] as String;
     var user = new User();
+    user.userId = decode['_id'].toString(); //!
     user.email = decode['email'].toString();
     user.username = decode['username'].toString();
     user.token = token.toString();
@@ -64,6 +65,7 @@ class UserRepository {
     print('coming from here');
     final token = json.decode(response.body)['token'] as String;
     var user = new User();
+    user.userId = decode['_id'].toString(); //!
     user.email = decode['email'].toString();
     user.username = decode['username'].toString();
     user.token = token.toString();
@@ -109,6 +111,7 @@ class UserRepository {
         final decode = json.decode(response.body);
         print("decode: " + decode.toString());
         var user = new User();
+        user.userId = decode['_id'].toString(); //!
         user.email = decode['email'].toString();
         user.username = decode['username'].toString();
         user.token = token;
@@ -116,6 +119,7 @@ class UserRepository {
         final userComeFromShared = await TokenStorage.getUserSharedPreference();
         print('email: from issignedin function&&&&&&&&&& ' +
             userComeFromShared.username);
+        print('userId: ' + userComeFromShared.userId);
 
         return true;
       } else {

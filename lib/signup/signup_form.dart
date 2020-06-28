@@ -1,5 +1,4 @@
 import 'package:chat_app/authentication/bloc/authentication_bloc.dart';
-import 'package:chat_app/login/login_screen.dart';
 import 'package:chat_app/signup/bloc/signup_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
